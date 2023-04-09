@@ -1,45 +1,70 @@
 import { html } from 'lit';
 import '../../football-scoreboard.js';
 
+const eibar = {
+  name: 'SD Eibar',
+  abbreviation: 'EIB',
+  redCards: 0,
+  goals: 3,
+  color1: '#800013',
+  color2: '#003471',
+}
+
+const cadiz = {
+  name: 'Cadiz',
+  abbreviation: 'CAD',
+  redCards: 0,
+  goals: 1,
+  color1: '#F1C421',
+}
+
 export default {
   title: 'Example/FootballScoreboard',
   component: 'football-scoreboard',
   argTypes: {
-    header: { control: 'text' },
-    counter: { control: 'number' },
-    textColor: { control: 'color' },
+    team1: { control: 'object' },
+    team2: { control: 'object' },
+    minutes: { control: 'text' },
+    seconds: { control: 'text' },
+    addedTime: { control: 'text' },
   },
 };
 
-function Template({ header = 'Hello world', counter = 5, textColor, slot }) {
+function Template({ team1, team2, minutes = '00', seconds = '00', addedTime = '' }) {
   return html`
     <football-scoreboard
-      style="--football-scoreboard-text-color: ${textColor || 'black'}"
-      .header=${header}
-      .counter=${counter}
+      .team1=${team1}
+      .team2=${team2}
+      .minutes=${minutes}
+      .seconds=${seconds}
+      .addedTime=${addedTime}
     >
-      ${slot}
     </football-scoreboard>
   `;
 }
 
 export const Regular = Template.bind({});
+Regular.args = {
+  team1: eibar,
+  team2: cadiz,
+  minutes: '59',
+  seconds: '33'
+}
 
-export const A11yFail = Template.bind({});
-A11yFail.args = {
-  header: 'My header',
-  textColor: '#efb1b1',
+export const AddedTime = Template.bind({});
+AddedTime.args = {
+  team1: eibar,
+  team2: cadiz,
+  minutes: '90',
+  seconds: '00',
+  addedTime: '3'
 };
 
-export const CustomCounter = Template.bind({});
-CustomCounter.args = {
-  counter: 123456,
-};
-
-export const SlottedContent = Template.bind({});
-SlottedContent.args = {
-  slot: html`<p>Slotted content</p>`,
-};
-SlottedContent.argTypes = {
-  slot: { table: { disable: true } },
+export const RedCard = Template.bind({});
+RedCard.args = {
+  team1: eibar,
+  team2: {...cadiz, redCards: 1},
+  minutes: '90',
+  seconds: '00',
+  addedTime: '3'
 };

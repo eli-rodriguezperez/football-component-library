@@ -1,12 +1,10 @@
 {
-  "name": "football-timer",
+  "name": "@football-component-library/football-timer",
   "description": "Webcomponent football-timer following open-wc recommendations",
   "license": "MIT",
   "author": "football-timer",
   "version": "0.0.0",
-  "type": "module",
   "main": "index.js",
-  "module": "index.js",
   "exports": {
     ".": "./index.js",
     "./football-timer.js": "./football-timer.js"
