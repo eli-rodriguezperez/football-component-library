@@ -1,9 +1,9 @@
 import { html } from 'lit';
-import '../../football-timer.js';
+import '../../football-scoreboard.js';
 
 export default {
-  title: 'FootballTimer',
-  component: 'football-timer',
+  title: 'Example/FootballScoreboard',
+  component: 'football-scoreboard',
   argTypes: {
     header: { control: 'text' },
     counter: { control: 'number' },
@@ -13,21 +13,22 @@ export default {
 
 function Template({ header = 'Hello world', counter = 5, textColor, slot }) {
   return html`
-    <football-timer
-      style="--football-timer-text-color: ${textColor || 'black'}"
+    <football-scoreboard
+      style="--football-scoreboard-text-color: ${textColor || 'black'}"
       .header=${header}
       .counter=${counter}
     >
       ${slot}
-    </football-timer>
+    </football-scoreboard>
   `;
 }
 
 export const Regular = Template.bind({});
 
-export const CustomHeader = Template.bind({});
-CustomHeader.args = {
+export const A11yFail = Template.bind({});
+A11yFail.args = {
   header: 'My header',
+  textColor: '#efb1b1',
 };
 
 export const CustomCounter = Template.bind({});
