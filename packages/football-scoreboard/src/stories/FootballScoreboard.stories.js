@@ -18,6 +18,24 @@ const cadiz = {
   color1: '#F1C421',
 }
 
+const madrid = {
+  name: 'Real Madrid',
+  abbreviation: 'MAD',
+  redCards: 0,
+  goals: 4,
+  color1: '#fff',
+}
+
+const barcelona = {
+  name: 'Futbol Club Barcelona',
+  abbreviation: 'FCB',
+  redCards: 0,
+  goals: 0,
+  color1: '#800013',
+  color2: '#003471',
+}
+
+
 export default {
   title: 'Example/FootballScoreboard',
   component: 'football-scoreboard',
@@ -59,6 +77,15 @@ AddedTime.args = {
   seconds: '00',
   addedTime: '3'
 };
+
+export const MadFCB = Template.bind({});
+MadFCB.args = {
+  team1: barcelona,
+  team2: madrid,
+  minutes: '90',
+  seconds: '00',
+  addedTime: '3'
+}
 
 export const RedCard = Template.bind({});
 RedCard.args = {

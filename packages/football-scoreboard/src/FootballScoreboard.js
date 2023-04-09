@@ -5,6 +5,10 @@ import '@football-component-library/football-timer/football-timer.js';
 export class FootballScoreboard extends LitElement {
   static styles = css`
     :host {
+      --primary-color-light: #D2E5F2;
+      --primary-color-dark: #31424F;
+      --secondary-color-contrast-light: #E9F6FF;
+
       display: inline-flex;
       flex-direction: row;
       justify-content: center;
@@ -12,12 +16,17 @@ export class FootballScoreboard extends LitElement {
       font-family: Helvetica Neue, Roboto, Arial, sans-serif;
       font-size: var(--football-scoreboard-font-size, 2rem);
       font-weight: var(--football-scoreboard-font-weight, lighter);
-      color: var(--football-timer-text-color, #31424f);
+      color: var(--football-timer-text-color, var(--primary-color));
+    }
+
+    [habitat^=dark] {
+      --football-scoreboard-background-color-default: var(--primary-color-dark);
+      --football-scoreboard-background-color-team-contrast: var(--secondary-color-contrast-light);
     }
 
     .element {
       padding: 0.25rem;
-      background-color: var(--football-scoreboard-background-color-default, #d2e5f2);
+      background-color: var(--football-scoreboard-background-color-default, var(--primary-color-light));
       border-radius: 3px;
     }
 
@@ -36,7 +45,7 @@ export class FootballScoreboard extends LitElement {
       align-items: center;
       font-size: var(--football-scoreboard-team-title-font-size, 1.5rem);
       font-weight: var(--football-scoreboard-team-title-font-weight, normal);
-      background-color: rgb(233, 246, 255);
+      background-color: var(--football-scoreboard-background-color-team-contrast, var(--secondary-color-contrast-light));
       margin: 0;
       margin-bottom: 0.25rem;
       border-radius: 2px;
@@ -46,14 +55,14 @@ export class FootballScoreboard extends LitElement {
     .team-goal {
       display: flex;
       justify-content: center;
-      background-color: rgb(233, 246, 255);
+      background-color: var(--football-scoreboard-background-color-team-contrast, var(--secondary-color-contrast-light));
       border-radius: 2px;
       align-items: center;
       font-size: 2rem;
       font-weight: normal;
       margin: 0;
       width: 2rem;
-      border: solid 1px #31424f;
+      border: solid 1px var(--primary-color-dark);
     }
 
     .team-goal ~ .team-goal {
@@ -65,7 +74,7 @@ export class FootballScoreboard extends LitElement {
       flex-direction: row;
       justify-content: center;
       align-items: center;
-      background-color: var(--football-scoreboard-background-color-default, #d2e5f2);
+      background-color: var(--football-scoreboard-background-color-default, var(--primary-color-light));
       padding: 0.25rem;
       border-radius: 3px;
     }
