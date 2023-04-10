@@ -16,7 +16,7 @@ export class FootballTimer extends LitElement {
       color: var(--football-timer-text-color, #31424f);
     }
 
-    [habitat^='dark'] {
+    :host([theme^='dark']) {
       --football-timer-added-time-background-color: #d2e5f2;
       --football-timer-added-time-color: #31424f;
       --football-timer-background-color: #31424f;
